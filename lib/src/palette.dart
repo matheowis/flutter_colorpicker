@@ -6,7 +6,7 @@ import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_colorpicker/src/utils.dart';
+import './utils.dart';
 
 /// Palette types for color picker area widget.
 enum PaletteType {
@@ -74,10 +74,14 @@ class HSVWithHueColorPainter extends CustomPainter {
     );
 
     canvas.drawCircle(
-      Offset(size.width * hsvColor.saturation, size.height * (1 - hsvColor.value)),
+      Offset(
+          size.width * hsvColor.saturation, size.height * (1 - hsvColor.value)),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(hsvColor.toColor()) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(hsvColor.toColor())
+                ? Colors.white
+                : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -122,7 +126,10 @@ class HSVWithSaturationColorPainter extends CustomPainter {
       ),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(hsvColor.toColor()) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(hsvColor.toColor())
+                ? Colors.white
+                : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -171,7 +178,10 @@ class HSVWithValueColorPainter extends CustomPainter {
       ),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(hsvColor.toColor()) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(hsvColor.toColor())
+                ? Colors.white
+                : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -212,10 +222,14 @@ class HSLWithHueColorPainter extends CustomPainter {
     canvas.drawRect(rect, Paint()..shader = gradientV.createShader(rect));
 
     canvas.drawCircle(
-      Offset(size.width * hslColor.saturation, size.height * (1 - hslColor.lightness)),
+      Offset(size.width * hslColor.saturation,
+          size.height * (1 - hslColor.lightness)),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(hslColor.toColor()) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(hslColor.toColor())
+                ? Colors.white
+                : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -260,10 +274,14 @@ class HSLWithSaturationColorPainter extends CustomPainter {
     canvas.drawRect(rect, Paint()..shader = gradientV.createShader(rect));
 
     canvas.drawCircle(
-      Offset(size.width * hslColor.hue / 360, size.height * (1 - hslColor.lightness)),
+      Offset(size.width * hslColor.hue / 360,
+          size.height * (1 - hslColor.lightness)),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(hslColor.toColor()) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(hslColor.toColor())
+                ? Colors.white
+                : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -305,18 +323,26 @@ class HSLWithLightnessColorPainter extends CustomPainter {
     canvas.drawRect(rect, Paint()..shader = gradientV.createShader(rect));
     canvas.drawRect(
       rect,
-      Paint()..color = Colors.black.withOpacity((1 - hslColor.lightness * 2).clamp(0, 1)),
+      Paint()
+        ..color =
+            Colors.black.withOpacity((1 - hslColor.lightness * 2).clamp(0, 1)),
     );
     canvas.drawRect(
       rect,
-      Paint()..color = Colors.white.withOpacity(((hslColor.lightness - 0.5) * 2).clamp(0, 1)),
+      Paint()
+        ..color = Colors.white
+            .withOpacity(((hslColor.lightness - 0.5) * 2).clamp(0, 1)),
     );
 
     canvas.drawCircle(
-      Offset(size.width * hslColor.hue / 360, size.height * (1 - hslColor.saturation)),
+      Offset(size.width * hslColor.hue / 360,
+          size.height * (1 - hslColor.saturation)),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(hslColor.toColor()) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(hslColor.toColor())
+                ? Colors.white
+                : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -359,10 +385,12 @@ class RGBWithRedColorPainter extends CustomPainter {
     );
 
     canvas.drawCircle(
-      Offset(size.width * color.blue / 255, size.height * (1 - color.green / 255)),
+      Offset(
+          size.width * color.blue / 255, size.height * (1 - color.green / 255)),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(color) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(color) ? Colors.white : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -405,10 +433,12 @@ class RGBWithGreenColorPainter extends CustomPainter {
     );
 
     canvas.drawCircle(
-      Offset(size.width * color.blue / 255, size.height * (1 - color.red / 255)),
+      Offset(
+          size.width * color.blue / 255, size.height * (1 - color.red / 255)),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(color) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(color) ? Colors.white : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -451,10 +481,12 @@ class RGBWithBlueColorPainter extends CustomPainter {
     );
 
     canvas.drawCircle(
-      Offset(size.width * color.red / 255, size.height * (1 - color.green / 255)),
+      Offset(
+          size.width * color.red / 255, size.height * (1 - color.green / 255)),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(color) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(color) ? Colors.white : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -493,18 +525,26 @@ class HUEColorWheelPainter extends CustomPainter {
         Color(0x00FFFFFF),
       ],
     );
-    canvas.drawCircle(center, radio, Paint()..shader = gradientS.createShader(rect));
-    canvas.drawCircle(center, radio, Paint()..shader = gradientR.createShader(rect));
-    canvas.drawCircle(center, radio, Paint()..color = Colors.black.withOpacity(1 - hsvColor.value));
+    canvas.drawCircle(
+        center, radio, Paint()..shader = gradientS.createShader(rect));
+    canvas.drawCircle(
+        center, radio, Paint()..shader = gradientR.createShader(rect));
+    canvas.drawCircle(center, radio,
+        Paint()..color = Colors.black.withOpacity(1 - hsvColor.value));
 
     canvas.drawCircle(
       Offset(
-        center.dx + hsvColor.saturation * radio * cos((hsvColor.hue * pi / 180)),
-        center.dy - hsvColor.saturation * radio * sin((hsvColor.hue * pi / 180)),
+        center.dx +
+            hsvColor.saturation * radio * cos((hsvColor.hue * pi / 180)),
+        center.dy -
+            hsvColor.saturation * radio * sin((hsvColor.hue * pi / 180)),
       ),
       size.height * 0.04,
       Paint()
-        ..color = pointerColor ?? (useWhiteForeground(hsvColor.toColor()) ? Colors.white : Colors.black)
+        ..color = pointerColor ??
+            (useWhiteForeground(hsvColor.toColor())
+                ? Colors.white
+                : Colors.black)
         ..strokeWidth = 1.5
         ..style = PaintingStyle.stroke,
     );
@@ -516,7 +556,8 @@ class HUEColorWheelPainter extends CustomPainter {
 
 /// Painter for hue ring.
 class HueRingPainter extends CustomPainter {
-  const HueRingPainter(this.hsvColor, {this.displayThumbColor = true, this.strokeWidth = 5});
+  const HueRingPainter(this.hsvColor,
+      {this.displayThumbColor = true, this.strokeWidth = 5});
 
   final HSVColor hsvColor;
   final bool displayThumbColor;
@@ -550,7 +591,11 @@ class HueRingPainter extends CustomPainter {
       center.dx + radio * cos((hsvColor.hue * pi / 180)),
       center.dy - radio * sin((hsvColor.hue * pi / 180)),
     );
-    canvas.drawShadow(Path()..addOval(Rect.fromCircle(center: offset, radius: 12)), Colors.black, 3.0, true);
+    canvas.drawShadow(
+        Path()..addOval(Rect.fromCircle(center: offset, radius: 12)),
+        Colors.black,
+        3.0,
+        true);
     canvas.drawCircle(
       offset,
       size.height * 0.04,
@@ -726,7 +771,8 @@ class ThumbPainter extends CustomPainter {
     canvas.drawShadow(
       Path()
         ..addOval(
-          Rect.fromCircle(center: const Offset(0.5, 2.0), radius: size.width * 1.8),
+          Rect.fromCircle(
+              center: const Offset(0.5, 2.0), radius: size.width * 1.8),
         ),
       Colors.black,
       3.0,
@@ -813,7 +859,11 @@ class ColorPickerLabel extends StatefulWidget {
     this.hsvColor, {
     Key? key,
     this.enableAlpha = true,
-    this.colorLabelTypes = const [ColorLabelType.rgb, ColorLabelType.hsv, ColorLabelType.hsl],
+    this.colorLabelTypes = const [
+      ColorLabelType.rgb,
+      ColorLabelType.hsv,
+      ColorLabelType.hsl
+    ],
     this.textStyle,
   })  : assert(colorLabelTypes.length > 0),
         super(key: key);
@@ -882,7 +932,8 @@ class _ColorPickerLabelState extends State<ColorPickerLabel> {
 
   List<Widget> colorValueLabels() {
     double fontSize = 14;
-    if (widget.textStyle != null && widget.textStyle?.fontSize != null) fontSize = widget.textStyle?.fontSize ?? 14;
+    if (widget.textStyle != null && widget.textStyle?.fontSize != null)
+      fontSize = widget.textStyle?.fontSize ?? 14;
 
     return [
       for (String item in _colorTypes[_colorType] ?? [])
@@ -896,14 +947,17 @@ class _ColorPickerLabelState extends State<ColorPickerLabel> {
                   children: <Widget>[
                     Text(
                       item,
-                      style: widget.textStyle ?? Theme.of(context).textTheme.bodyText1,
+                      style: widget.textStyle ??
+                          Theme.of(context).textTheme.bodyText1,
                     ),
                     const SizedBox(height: 10.0),
                     Expanded(
                       child: Text(
-                        colorValue(widget.hsvColor, _colorType)[_colorTypes[_colorType]!.indexOf(item)],
+                        colorValue(widget.hsvColor, _colorType)[
+                            _colorTypes[_colorType]!.indexOf(item)],
                         overflow: TextOverflow.ellipsis,
-                        style: widget.textStyle ?? Theme.of(context).textTheme.bodyText2,
+                        style: widget.textStyle ??
+                            Theme.of(context).textTheme.bodyText2,
                       ),
                     ),
                   ],
@@ -974,12 +1028,18 @@ class _ColorPickerInputState extends State<ColorPickerInput> {
           widget.color.red.toRadixString(16).toUpperCase().padLeft(2, '0') +
           widget.color.green.toRadixString(16).toUpperCase().padLeft(2, '0') +
           widget.color.blue.toRadixString(16).toUpperCase().padLeft(2, '0') +
-          (widget.enableAlpha ? widget.color.alpha.toRadixString(16).toUpperCase().padLeft(2, '0') : '');
+          (widget.enableAlpha
+              ? widget.color.alpha
+                  .toRadixString(16)
+                  .toUpperCase()
+                  .padLeft(2, '0')
+              : '');
     }
     return Padding(
       padding: const EdgeInsets.only(top: 5.0),
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        if (!widget.embeddedText) Text('Hex', style: Theme.of(context).textTheme.bodyText1),
+        if (!widget.embeddedText)
+          Text('Hex', style: Theme.of(context).textTheme.bodyText1),
         const SizedBox(width: 10),
         SizedBox(
           width: (Theme.of(context).textTheme.bodyText2?.fontSize ?? 14) * 10,
@@ -992,13 +1052,14 @@ class _ColorPickerInputState extends State<ColorPickerInput> {
             ],
             decoration: InputDecoration(
               isDense: true,
-              label: widget.embeddedText ? const Text('Hex') : null,
+              labelText: widget.embeddedText ? 'Hex' : null,
               contentPadding: const EdgeInsets.symmetric(vertical: 5),
             ),
             onChanged: (String value) {
               String input = value;
               if (value.length == 9) {
-                input = value.split('').getRange(7, 9).join() + value.split('').getRange(1, 7).join();
+                input = value.split('').getRange(7, 9).join() +
+                    value.split('').getRange(1, 7).join();
               }
               final Color? color = colorFromHex(input);
               if (color != null) {
@@ -1032,7 +1093,8 @@ class ColorPickerSlider extends StatelessWidget {
 
   void slideEvent(RenderBox getBox, BoxConstraints box, Offset globalPosition) {
     double localDx = getBox.globalToLocal(globalPosition).dx - 15.0;
-    double progress = localDx.clamp(0.0, box.maxWidth - 30.0) / (box.maxWidth - 30.0);
+    double progress =
+        localDx.clamp(0.0, box.maxWidth - 30.0) / (box.maxWidth - 30.0);
     switch (trackType) {
       case TrackType.hue:
         // 360 is the same as zero
@@ -1052,16 +1114,20 @@ class ColorPickerSlider extends StatelessWidget {
         onColorChanged(hslToHsv(hsvToHsl(hsvColor).withLightness(progress)));
         break;
       case TrackType.red:
-        onColorChanged(HSVColor.fromColor(hsvColor.toColor().withRed((progress * 0xff).round())));
+        onColorChanged(HSVColor.fromColor(
+            hsvColor.toColor().withRed((progress * 0xff).round())));
         break;
       case TrackType.green:
-        onColorChanged(HSVColor.fromColor(hsvColor.toColor().withGreen((progress * 0xff).round())));
+        onColorChanged(HSVColor.fromColor(
+            hsvColor.toColor().withGreen((progress * 0xff).round())));
         break;
       case TrackType.blue:
-        onColorChanged(HSVColor.fromColor(hsvColor.toColor().withBlue((progress * 0xff).round())));
+        onColorChanged(HSVColor.fromColor(
+            hsvColor.toColor().withBlue((progress * 0xff).round())));
         break;
       case TrackType.alpha:
-        onColorChanged(hsvColor.withAlpha(localDx.clamp(0.0, box.maxWidth - 30.0) / (box.maxWidth - 30.0)));
+        onColorChanged(hsvColor.withAlpha(
+            localDx.clamp(0.0, box.maxWidth - 30.0) / (box.maxWidth - 30.0)));
         break;
     }
   }
@@ -1078,26 +1144,34 @@ class ColorPickerSlider extends StatelessWidget {
           break;
         case TrackType.saturation:
           thumbOffset += (box.maxWidth - 30.0) * hsvColor.saturation;
-          thumbColor = HSVColor.fromAHSV(1.0, hsvColor.hue, hsvColor.saturation, 1.0).toColor();
+          thumbColor =
+              HSVColor.fromAHSV(1.0, hsvColor.hue, hsvColor.saturation, 1.0)
+                  .toColor();
           break;
         case TrackType.saturationForHSL:
           thumbOffset += (box.maxWidth - 30.0) * hsvToHsl(hsvColor).saturation;
-          thumbColor = HSLColor.fromAHSL(1.0, hsvColor.hue, hsvToHsl(hsvColor).saturation, 0.5).toColor();
+          thumbColor = HSLColor.fromAHSL(
+                  1.0, hsvColor.hue, hsvToHsl(hsvColor).saturation, 0.5)
+              .toColor();
           break;
         case TrackType.value:
           thumbOffset += (box.maxWidth - 30.0) * hsvColor.value;
-          thumbColor = HSVColor.fromAHSV(1.0, hsvColor.hue, 1.0, hsvColor.value).toColor();
+          thumbColor = HSVColor.fromAHSV(1.0, hsvColor.hue, 1.0, hsvColor.value)
+              .toColor();
           break;
         case TrackType.lightness:
           thumbOffset += (box.maxWidth - 30.0) * hsvToHsl(hsvColor).lightness;
-          thumbColor = HSLColor.fromAHSL(1.0, hsvColor.hue, 1.0, hsvToHsl(hsvColor).lightness).toColor();
+          thumbColor = HSLColor.fromAHSL(
+                  1.0, hsvColor.hue, 1.0, hsvToHsl(hsvColor).lightness)
+              .toColor();
           break;
         case TrackType.red:
           thumbOffset += (box.maxWidth - 30.0) * hsvColor.toColor().red / 0xff;
           thumbColor = hsvColor.toColor().withOpacity(1.0);
           break;
         case TrackType.green:
-          thumbOffset += (box.maxWidth - 30.0) * hsvColor.toColor().green / 0xff;
+          thumbOffset +=
+              (box.maxWidth - 30.0) * hsvColor.toColor().green / 0xff;
           thumbColor = hsvColor.toColor().withOpacity(1.0);
           break;
         case TrackType.blue:
@@ -1142,10 +1216,12 @@ class ColorPickerSlider extends StatelessWidget {
               builder: (BuildContext context, BoxConstraints box) {
                 RenderBox? getBox = context.findRenderObject() as RenderBox?;
                 return GestureDetector(
-                  onPanDown: (DragDownDetails details) =>
-                      getBox != null ? slideEvent(getBox, box, details.globalPosition) : null,
-                  onPanUpdate: (DragUpdateDetails details) =>
-                      getBox != null ? slideEvent(getBox, box, details.globalPosition) : null,
+                  onPanDown: (DragDownDetails details) => getBox != null
+                      ? slideEvent(getBox, box, details.globalPosition)
+                      : null,
+                  onPanUpdate: (DragUpdateDetails details) => getBox != null
+                      ? slideEvent(getBox, box, details.globalPosition)
+                      : null,
                 );
               },
             ),
@@ -1209,7 +1285,8 @@ class ColorPickerArea extends StatelessWidget {
         onColorChanged(hsvColor.withHue(horizontal * 360).withValue(vertical));
         break;
       case PaletteType.hsvWithValue:
-        onColorChanged(hsvColor.withHue(horizontal * 360).withSaturation(vertical));
+        onColorChanged(
+            hsvColor.withHue(horizontal * 360).withSaturation(vertical));
         break;
       case PaletteType.hsl:
       case PaletteType.hslWithHue:
@@ -1229,17 +1306,26 @@ class ColorPickerArea extends StatelessWidget {
         break;
       case PaletteType.rgbWithRed:
         onColorChanged(HSVColor.fromColor(
-          hsvColor.toColor().withBlue((horizontal * 255).round()).withGreen((vertical * 255).round()),
+          hsvColor
+              .toColor()
+              .withBlue((horizontal * 255).round())
+              .withGreen((vertical * 255).round()),
         ));
         break;
       case PaletteType.rgbWithGreen:
         onColorChanged(HSVColor.fromColor(
-          hsvColor.toColor().withBlue((horizontal * 255).round()).withRed((vertical * 255).round()),
+          hsvColor
+              .toColor()
+              .withBlue((horizontal * 255).round())
+              .withRed((vertical * 255).round()),
         ));
         break;
       case PaletteType.rgbWithBlue:
         onColorChanged(HSVColor.fromColor(
-          hsvColor.toColor().withRed((horizontal * 255).round()).withGreen((vertical * 255).round()),
+          hsvColor
+              .toColor()
+              .withRed((horizontal * 255).round())
+              .withGreen((vertical * 255).round()),
         ));
         break;
       default:
@@ -1251,7 +1337,8 @@ class ColorPickerArea extends StatelessWidget {
     onColorChanged(hsvColor.withHue(hue).withSaturation(radio));
   }
 
-  void _handleGesture(Offset position, BuildContext context, double height, double width) {
+  void _handleGesture(
+      Offset position, BuildContext context, double height, double width) {
     RenderBox? getBox = context.findRenderObject() as RenderBox?;
     if (getBox == null) return;
 
@@ -1262,9 +1349,15 @@ class ColorPickerArea extends StatelessWidget {
     if (paletteType == PaletteType.hueWheel) {
       Offset center = Offset(width / 2, height / 2);
       double radio = width <= height ? width / 2 : height / 2;
-      double dist = sqrt(pow(horizontal - center.dx, 2) + pow(vertical - center.dy, 2)) / radio;
-      double rad = (atan2(horizontal - center.dx, vertical - center.dy) / pi + 1) / 2 * 360;
-      _handleColorWheelChange(((rad + 90) % 360).clamp(0, 360), dist.clamp(0, 1));
+      double dist =
+          sqrt(pow(horizontal - center.dx, 2) + pow(vertical - center.dy, 2)) /
+              radio;
+      double rad =
+          (atan2(horizontal - center.dx, vertical - center.dy) / pi + 1) /
+              2 *
+              360;
+      _handleColorWheelChange(
+          ((rad + 90) % 360).clamp(0, 360), dist.clamp(0, 1));
     } else {
       _handleColorRectChange(horizontal / width, 1 - vertical / height);
     }
@@ -1279,12 +1372,16 @@ class ColorPickerArea extends StatelessWidget {
 
         return RawGestureDetector(
           gestures: {
-            _AlwaysWinPanGestureRecognizer: GestureRecognizerFactoryWithHandlers<_AlwaysWinPanGestureRecognizer>(
+            _AlwaysWinPanGestureRecognizer:
+                GestureRecognizerFactoryWithHandlers<
+                    _AlwaysWinPanGestureRecognizer>(
               () => _AlwaysWinPanGestureRecognizer(),
               (_AlwaysWinPanGestureRecognizer instance) {
                 instance
-                  ..onDown = ((details) => _handleGesture(details.globalPosition, context, height, width))
-                  ..onUpdate = ((details) => _handleGesture(details.globalPosition, context, height, width));
+                  ..onDown = ((details) => _handleGesture(
+                      details.globalPosition, context, height, width))
+                  ..onUpdate = ((details) => _handleGesture(
+                      details.globalPosition, context, height, width));
               },
             ),
           },
@@ -1295,22 +1392,32 @@ class ColorPickerArea extends StatelessWidget {
                 case PaletteType.hsvWithHue:
                   return CustomPaint(painter: HSVWithHueColorPainter(hsvColor));
                 case PaletteType.hsvWithSaturation:
-                  return CustomPaint(painter: HSVWithSaturationColorPainter(hsvColor));
+                  return CustomPaint(
+                      painter: HSVWithSaturationColorPainter(hsvColor));
                 case PaletteType.hsvWithValue:
-                  return CustomPaint(painter: HSVWithValueColorPainter(hsvColor));
+                  return CustomPaint(
+                      painter: HSVWithValueColorPainter(hsvColor));
                 case PaletteType.hsl:
                 case PaletteType.hslWithHue:
-                  return CustomPaint(painter: HSLWithHueColorPainter(hsvToHsl(hsvColor)));
+                  return CustomPaint(
+                      painter: HSLWithHueColorPainter(hsvToHsl(hsvColor)));
                 case PaletteType.hslWithSaturation:
-                  return CustomPaint(painter: HSLWithSaturationColorPainter(hsvToHsl(hsvColor)));
+                  return CustomPaint(
+                      painter:
+                          HSLWithSaturationColorPainter(hsvToHsl(hsvColor)));
                 case PaletteType.hslWithLightness:
-                  return CustomPaint(painter: HSLWithLightnessColorPainter(hsvToHsl(hsvColor)));
+                  return CustomPaint(
+                      painter:
+                          HSLWithLightnessColorPainter(hsvToHsl(hsvColor)));
                 case PaletteType.rgbWithRed:
-                  return CustomPaint(painter: RGBWithRedColorPainter(hsvColor.toColor()));
+                  return CustomPaint(
+                      painter: RGBWithRedColorPainter(hsvColor.toColor()));
                 case PaletteType.rgbWithGreen:
-                  return CustomPaint(painter: RGBWithGreenColorPainter(hsvColor.toColor()));
+                  return CustomPaint(
+                      painter: RGBWithGreenColorPainter(hsvColor.toColor()));
                 case PaletteType.rgbWithBlue:
-                  return CustomPaint(painter: RGBWithBlueColorPainter(hsvColor.toColor()));
+                  return CustomPaint(
+                      painter: RGBWithBlueColorPainter(hsvColor.toColor()));
                 case PaletteType.hueWheel:
                   return CustomPaint(painter: HUEColorWheelPainter(hsvColor));
                 default:
@@ -1339,7 +1446,8 @@ class ColorPickerHueRing extends StatelessWidget {
   final bool displayThumbColor;
   final double strokeWidth;
 
-  void _handleGesture(Offset position, BuildContext context, double height, double width) {
+  void _handleGesture(
+      Offset position, BuildContext context, double height, double width) {
     RenderBox? getBox = context.findRenderObject() as RenderBox?;
     if (getBox == null) return;
 
@@ -1349,9 +1457,15 @@ class ColorPickerHueRing extends StatelessWidget {
 
     Offset center = Offset(width / 2, height / 2);
     double radio = width <= height ? width / 2 : height / 2;
-    double dist = sqrt(pow(horizontal - center.dx, 2) + pow(vertical - center.dy, 2)) / radio;
-    double rad = (atan2(horizontal - center.dx, vertical - center.dy) / pi + 1) / 2 * 360;
-    if (dist > 0.7 && dist < 1.3) onColorChanged(hsvColor.withHue(((rad + 90) % 360).clamp(0, 360)));
+    double dist =
+        sqrt(pow(horizontal - center.dx, 2) + pow(vertical - center.dy, 2)) /
+            radio;
+    double rad =
+        (atan2(horizontal - center.dx, vertical - center.dy) / pi + 1) /
+            2 *
+            360;
+    if (dist > 0.7 && dist < 1.3)
+      onColorChanged(hsvColor.withHue(((rad + 90) % 360).clamp(0, 360)));
   }
 
   @override
@@ -1363,17 +1477,22 @@ class ColorPickerHueRing extends StatelessWidget {
 
         return RawGestureDetector(
           gestures: {
-            _AlwaysWinPanGestureRecognizer: GestureRecognizerFactoryWithHandlers<_AlwaysWinPanGestureRecognizer>(
+            _AlwaysWinPanGestureRecognizer:
+                GestureRecognizerFactoryWithHandlers<
+                    _AlwaysWinPanGestureRecognizer>(
               () => _AlwaysWinPanGestureRecognizer(),
               (_AlwaysWinPanGestureRecognizer instance) {
                 instance
-                  ..onDown = ((details) => _handleGesture(details.globalPosition, context, height, width))
-                  ..onUpdate = ((details) => _handleGesture(details.globalPosition, context, height, width));
+                  ..onDown = ((details) => _handleGesture(
+                      details.globalPosition, context, height, width))
+                  ..onUpdate = ((details) => _handleGesture(
+                      details.globalPosition, context, height, width));
               },
             ),
           },
           child: CustomPaint(
-            painter: HueRingPainter(hsvColor, displayThumbColor: displayThumbColor, strokeWidth: strokeWidth),
+            painter: HueRingPainter(hsvColor,
+                displayThumbColor: displayThumbColor, strokeWidth: strokeWidth),
           ),
         );
       },
@@ -1396,5 +1515,6 @@ class _AlwaysWinPanGestureRecognizer extends PanGestureRecognizer {
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(oldValue, TextEditingValue newValue) =>
-      TextEditingValue(text: newValue.text.toUpperCase(), selection: newValue.selection);
+      TextEditingValue(
+          text: newValue.text.toUpperCase(), selection: newValue.selection);
 }

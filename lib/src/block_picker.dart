@@ -3,7 +3,7 @@
 library block_colorpicker;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/src/utils.dart';
+import './utils.dart';
 
 /// Child widget for layout builder.
 typedef PickerItem = Widget Function(Color color);
